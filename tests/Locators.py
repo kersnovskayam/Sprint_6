@@ -1,0 +1,21 @@
+class Locators:
+    button1_xpath = '//div[@id="accordion__heading-0"]'
+    button2_xpath = '//div[@id="accordion__heading-1"]'
+    button3_xpath = '//div[@id="accordion__heading-2"]'
+    button4_xpath = '//div[@id="accordion__heading-3"]'
+    button5_xpath = '//div[@id="accordion__heading-4"]'
+    button6_xpath = '//div[@id="accordion__heading-5"])'
+    button7_xpath = '//div[@id="accordion__heading-6"])'
+    button8_xpath = '//div[@id="accordion__heading-7"]'
+
+    order_xpath1 = '//button[@class="Button_Button__ra12g"]'
+    order_xpath2 = '//button[@class="Button_Button__ra12g Button_UltraBig__UU3Lp"]'
+
+    hidden_text1_xpath ='//div[@id="accordion__panel-0"]'
+    hidden_text2_xpath ='//div[@id="accordion__panel-1"]'
+    hidden_text3_xpath ='//div[@id="accordion__panel-2"]'
+    hidden_text4_xpath ='//div[@id="accordion__panel-3"]'
+    hidden_text5_xpath ='//div[@id="accordion__panel-4"]'
+    hidden_text6_xpath ='//div[@id="accordion__panel-5"]'
+    hidden_text7_xpath ='//div[@id="accordion__panel-6"]'
+    hidden_text8_xpath= '//div[@id="accordion__panel-0"]'
