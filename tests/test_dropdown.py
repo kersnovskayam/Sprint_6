@@ -1,83 +1,121 @@
-from selenium.webdriver.common.by import By
-from tests.constants import OPTIONS, URLS
+import allure
+import time
+from Locators import Locators
+from constants import OPTIONS, URLS
+from page_object import PageObject
 
-from tests import Locators
+class Tests:
+    @allure.title("Проверка скрытого текста в Option_1")
+    def test_1(self, set_up_browser):
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-class Tests():
-    def test_4(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Нажимаем на кнопку подтвердить куки"):
+            page.approve_cookie()
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button1_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text1_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_1
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(5000)
 
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button1_xpath,
+                                                     Locators.hidden_text1_xpath,
+                                                     OPTIONS.Option_1)
+
+    @allure.title("Проверка скрытого текста в Option_2")
     def test_2(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button2_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text2_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_2
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(5000)
 
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button2_xpath,
+                                                     Locators.hidden_text2_xpath,
+                                                     OPTIONS.Option_2)
+
+    @allure.title("Проверка скрытого текста в Option_3")
     def test_3(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button3_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text3_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_3
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(5000)
 
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button3_xpath,
+                                                     Locators.hidden_text3_xpath,
+                                                     OPTIONS.Option_3)
+
+    @allure.title("Проверка скрытого текста в Option_4")
     def test_4(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button4_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text4_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_4
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(5000)
 
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button4_xpath,
+                                                     Locators.hidden_text4_xpath,
+                                                     OPTIONS.Option_4)
+
+    @allure.title("Проверка скрытого текста в Option_5")
     def test_5(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button5_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text5_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_5
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(5000)
 
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button5_xpath,
+                                                     Locators.hidden_text5_xpath,
+                                                     OPTIONS.Option_5)
+
+    @allure.title("Проверка скрытого текста в Option_6")
     def test_6(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button6_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text6_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_6
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(6000)
 
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button6_xpath,
+                                                     Locators.hidden_text6_xpath,
+                                                     OPTIONS.Option_6)
 
+    @allure.title("Проверка скрытого текста в Option_7")
     def test_7(self, set_up_browser):
-        driver = set_up_browser
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
 
-        driver.get(URLS.MAIN)
-        driver.execute_script("window.scrollTo(0, 1980)")
-        button = driver.find_element(By.XPATH, Locators.Locators.button7_xpath)
-        button.click()
-        hidden_text = driver.find_element(By.XPATH, Locators.Locators.hidden_text7_xpath)
-        assert hidden_text.is_displayed() is True
-        assert hidden_text.text == OPTIONS.Option_7
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(7000)
+
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button7_xpath,
+                                                     Locators.hidden_text7_xpath,
+                                                     OPTIONS.Option_7)
+
+    @allure.title("Проверка скрытого текста в Option_8")
+    def test_8(self, set_up_browser):
+        with allure.step("Открытие основной страницы"):
+            page = PageObject(set_up_browser)
+            page.open_main_page(URLS.MAIN)
+
+        with allure.step("Прокрутка страницы"):
+            page.scroll_page(7000)
+
+        with allure.step("Нажатие кнопки и проверка скрытого текста"):
+            page.click_button_and_verify_hidden_text(Locators.button8_xpath,
+                                                     Locators.hidden_text8_xpath,
+                                                     OPTIONS.Option_8)
