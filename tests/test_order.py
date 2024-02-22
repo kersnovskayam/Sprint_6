@@ -1,77 +1,49 @@
 import allure
-from constants import URLS, DATA1, DATA2
-from page_object import PageObject
+
+from constants import URLS
+from locators.order_locators import OrderLocators
+from methods.order_methods import OrderMethods
+from test_data import PersonalDataUserOne, PersonalDataUserTwo
 
 
 class Test:
     @allure.title("Выполнение оформления заказа по нажатию кнопки 'Заказать' ")
-    def test1(self, set_up_browser):
-        with allure.step("Открытие основной страницы"):
-            page = PageObject(set_up_browser)
-            page.open_main_page(URLS.MAIN)
-        with allure.step("Нажимаем на кнопку подтвердить куки"):
-            page.approve_cookie()
-        with allure.step("Нажатие на кнопку 'Заказать' "):
-            page.order_button()
-        with allure.step("Ввод имени из первого набора данных"):
-            page.enter_order_name(DATA1.name)
-        with allure.step("Ввод фамилии из первого набора данных"):
-            page.enter_order_surname(DATA1.surname)
-        with allure.step("Ввод адреса из первого набора данных"):
-            page.enter_order_address(DATA1.address)
-        with allure.step("Ввод метро из первого набора данных"):
-            page.enter_order_metro(DATA1.metro)
-        with allure.step("Ввод номера телефона из первого набора данных"):
-            page.enter_order_phone(DATA1.phone)
-        with allure.step("Нажатие на кнопку 'Далее'"):
-            page.button_next()
-        with allure.step("Ввод даты заказа из первого набора данных"):
-            page.enter_order_date(DATA1.date)
-        with allure.step("Выбор срока аренды самоката"):
-            page.dropdown_date()
-        with allure.step("Выбор цвета самоката"):
-            page.color_grey_scooter()
-        with allure.step("Ввод комментария из первого набора данных"):
-            page.enter_comment_courier(DATA1.comment)
-        with allure.step("Нажатие на кнопку 'Заказать' "):
-            page.button_next()
-        with allure.step("Нажатие на кнопку 'Да'"):
-            page.button_approve()
-        with allure.step("Нажатие на кнопку 'Посмотреть статус'"):
-            page.button_check_status()
+    def test_order_form_top(self, browser):
+        page = OrderMethods(browser)
+        page.open_main_page(URLS.MAIN)
+        page.approve_cookie()
+        page.click_order_button()
+        page.enter_order_name(PersonalDataUserOne.NAME)
+        page.enter_order_surname(PersonalDataUserOne.SURNAME)
+        page.enter_order_address(PersonalDataUserOne.ADDRESS)
+        page.enter_order_metro(PersonalDataUserOne.METRO)
+        page.enter_order_phone(PersonalDataUserOne.PHONE)
+        page.click_button_next()
+        page.enter_order_date(PersonalDataUserOne.DATE)
+        page.dropdown_date()
+        page.choose_color_of_scooter(OrderLocators.order_color_grey_scooter)
+        page.enter_comment_courier(PersonalDataUserOne.COMMENT)
+        page.click_button_next()
+        page.click_button_approve()
+        page.click_button_check_status()
 
     @allure.title("Выполнение оформления заказа по нажатию кнопки 'Заказать' в середине главной страницы ")
-    def test2(self, set_up_browser):
-        with allure.step("Открытие основной страницы"):
-            page = PageObject(set_up_browser)
-            page.open_main_page(URLS.MAIN)
-        with allure.step("Прокрутка страницы до кнопки 'Заказать'"):
-            page.scroll_page(1980)
-        with allure.step("Нажатие на кнопку 'Заказать' "):
-            page.order_button2()
-        with allure.step("Ввод имени из второго набора данных"):
-            page.enter_order_name(DATA2.name)
-        with allure.step("Ввод фамилии из второго набора данных"):
-            page.enter_order_surname(DATA2.surname)
-        with allure.step("Ввод адреса из второго набора данных"):
-            page.enter_order_address(DATA2.address)
-        with allure.step("Ввод метро из второго набора данных"):
-            page.enter_order_metro(DATA2.metro)
-        with allure.step("Ввод номера телефона из второго набора данных"):
-            page.enter_order_phone(DATA2.phone)
-        with allure.step("Нажатие на кнопку 'Далее'"):
-            page.button_next()
-        with allure.step("Ввод даты заказа из второго набора данных"):
-            page.enter_order_date(DATA2.date)
-        with allure.step("Выбор срока аренды самоката"):
-            page.dropdown_date()
-        with allure.step("Выбор цвета самоката"):
-            page.color_black_scooter()
-        with allure.step("Ввод комментария из второго набора данных"):
-            page.enter_comment_courier(DATA2.comment)
-        with allure.step("Нажатие на кнопку 'Заказать' "):
-            page.button_next()
-        with allure.step("Нажатие на кнопку 'Да'"):
-            page.button_approve()
-        with allure.step("Нажатие на кнопку 'Посмотреть статус'"):
-            page.button_check_status()
+    def test_order_form_down(self, browser):
+        page = OrderMethods(browser)
+        page.open_main_page(URLS.MAIN)
+        page.approve_cookie()
+        page.scroll_page(1980)
+        page.click_order_button2()
+        page.enter_order_name(PersonalDataUserTwo.NAME)
+        page.enter_order_surname(PersonalDataUserTwo.SURNAME)
+        page.enter_order_address(PersonalDataUserTwo.ADDRESS)
+        page.enter_order_metro2(PersonalDataUserTwo.METRO)
+        page.enter_order_phone(PersonalDataUserTwo.PHONE)
+        page.click_button_next()
+        page.enter_order_date(PersonalDataUserTwo.DATE)
+        page.dropdown_date()
+        page.choose_color_of_scooter(OrderLocators.order_color_black_scooter)
+        page.enter_comment_courier(PersonalDataUserTwo.COMMENT)
+        page.click_button_next()
+        page.click_button_approve()
+        page.click_button_check_status()

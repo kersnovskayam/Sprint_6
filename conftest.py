@@ -1,13 +1,13 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 
 
-@pytest.fixture(scope="class")
-def set_up_browser():
+@pytest.fixture(scope="function", autouse=True)
+def browser(request):
     options = Options()
     options.headless = False
     driver = webdriver.Firefox()
-    driver.implicitly_wait(15)
+    driver.implicitly_wait(10)
     yield driver
     driver.quit()
